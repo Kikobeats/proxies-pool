@@ -7,7 +7,7 @@
 [![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/luminati-tunnel.svg?style=flat-square)](https://david-dm.org/Kikobeats/luminati-tunnel#info=devDependencies)
 [![NPM Status](https://img.shields.io/npm/dm/luminati-tunnel.svg?style=flat-square)](https://www.npmjs.org/package/luminati-tunnel)
 
-> HTTP/HTTPS tunnel proxy using Luminati.io using round robin strategy.
+> HTTP/HTTPS tunnel proxy for luminati.io using round robin strategy.
 
 ## Install
 
