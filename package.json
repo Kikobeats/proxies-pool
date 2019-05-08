@@ -2,7 +2,7 @@
   "name": "luminati-tunnel",
   "description": "HTTP/HTTPS tunnel proxy using Luminati.io using round robin strategy.",
   "homepage": "https://nicedoc.io/Kikobeats/luminati-tunnel",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "index.js",
   "author": {
     "name": "Kiko Beats",
