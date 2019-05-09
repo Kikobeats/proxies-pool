@@ -97,6 +97,10 @@ Returns the next proxy tunnel credential.
 
 Returns the previous proxy tunnel credential.
 
+#### .size()
+
+Returns the number of proxies in the pool.
+
 ## License
 
 **luminati-tunnel** © [Kiko Beats](https://kikobeats.com), released under the [MIT](https://github.com/Kikobeats/luminati-tunnel/blob/master/LICENSE.md) License.<br>

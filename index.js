@@ -32,6 +32,7 @@ module.exports = (proxies = [], fromIndex = 0) => {
   luminatiTunnel.index = () => getProxy.index
   luminatiTunnel.next = getProxy.next.bind(getProxy)
   luminatiTunnel.previous = getProxy.previous.bind(getProxy)
+  luminatiTunnel.size = () => proxies.length
 
   return luminatiTunnel
 }
