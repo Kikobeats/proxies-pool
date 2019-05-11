@@ -9,9 +9,18 @@ const roundRobin = (items, steps) => {
   return list
 }
 
-const parseUri = str => {
+const parse = str => {
   const [host, port, user, password] = str.split(':')
-  return { host, proxyAuth: `${user}:${password}`, port: Number(port) }
+  return {
+    host,
+    proxyAuth: `${user}:${password}`,
+    port: Number(port)
+  }
+}
+
+const stringify = ({ host, proxyAuth, port } = {}) => {
+  const [user, password] = proxyAuth.split(':')
+  return `${host}:${port}:${user}:${password}`
 }
 
 module.exports = (proxies = [], fromIndex = 0) => {
@@ -19,7 +28,7 @@ module.exports = (proxies = [], fromIndex = 0) => {
     throw TypeError('You need to provide a collection of proxies.')
   }
 
-  const getProxy = roundRobin(proxies.map(parseUri), fromIndex)
+  const getProxy = roundRobin(proxies.map(parse), fromIndex)
 
   const luminatiTunnel = opts => {
     const proxy = getProxy.current()
@@ -38,4 +47,5 @@ module.exports = (proxies = [], fromIndex = 0) => {
 }
 
 module.exports.roundRobin = roundRobin
-module.exports.parseUri = parseUri
+module.exports.stringify = stringify
+module.exports.parse = parse

@@ -1,10 +1,10 @@
 const test = require('ava')
 
-const { parseUri } = require('..')
+const { parse } = require('..')
 
 test('parse proxy url into an objet', t => {
   t.deepEqual(
-    parseUri(
+    parse(
       'zproxy.lum-superproxy.io:22225:lum-customer-foo-zone-zone1-ip-0.0.0.0:bar'
     ),
     {

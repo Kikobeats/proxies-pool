@@ -101,6 +101,22 @@ Returns the previous proxy tunnel credential.
 
 Returns the number of proxies in the pool.
 
+### .parse(uri)
+
+#### uri
+
+Type: `string`
+
+It converts an URI string into a tunnel agent object.
+
+### .stringify(obj)
+
+#### obj
+
+Type: `oibject`
+
+It converts an tunnel agent object into an URI string.
+
 ## License
 
 **luminati-tunnel** © [Kiko Beats](https://kikobeats.com), released under the [MIT](https://github.com/Kikobeats/luminati-tunnel/blob/master/LICENSE.md) License.<br>
