@@ -1,24 +1,27 @@
 'use strict'
 
+const tunnel = require('tunnel')
 const test = require('ava')
 const got = require('got')
 
-const createTunnel = require('..')
+const proxiesPool = require('..')
 
 const proxies = [process.env.PROXY_ONE, process.env.PROXY_TWO]
 
-const { parseUri } = createTunnel
-
 test('do a request', async t => {
-  const tunnel = createTunnel(proxies)
-  t.is(tunnel.index(), 0)
-  t.deepEqual(tunnel.current(), parseUri(proxies[0]))
-  const { statusCode } = await got('http://lumtest.com/echo.json', {
-    agent: tunnel(),
-    json: true
+  const proxyPool = proxiesPool(proxies, 0, tunnel.httpOverHttp)
+  t.is(proxyPool.index(), 0)
+  t.deepEqual(proxyPool.current(), proxiesPool.parse(proxies[0]))
+
+  const { statusCode } = await got('https://lumtest.com/echo.json', {
+    agent: {
+      http: tunnel.httpOverHttp({
+        proxy: proxyPool()
+      })
+    }
   })
 
   t.is(statusCode, 200)
-  t.is(tunnel.index(), 1)
-  t.deepEqual(tunnel.current(), parseUri(proxies[1]))
+  t.is(proxyPool.index(), 1)
+  t.deepEqual(proxyPool.current(), proxiesPool.parse(proxies[1]))
 })

@@ -1,15 +1,14 @@
 'use strict'
 
-const createTunnel = require('tunnel')
 const Cycled = require('cycled')
 
-const roundRobin = (items, steps) => {
+const roundRobin = (items, fromIndex) => {
   const list = new Cycled(items)
-  if (steps) list.step(steps)
+  if (fromIndex) list.step(fromIndex)
   return list
 }
 
-const parseUri = str => {
+const parse = str => {
   const [host, port, user, password] = str.split(':')
   return {
     host,
@@ -18,28 +17,23 @@ const parseUri = str => {
   }
 }
 
-module.exports = (proxies = [], fromIndex = 0) => {
-  if (!proxies.length) {
-    throw TypeError('You need to provide a collection of proxies.')
-  }
+module.exports = (items = [], fromIndex = 0, fn) => {
+  const getProxy = roundRobin(items.map(parse), fromIndex)
 
-  const getProxy = roundRobin(proxies.map(parseUri), fromIndex)
-
-  const luminatiTunnel = opts => {
+  const proxyPool = () => {
     const proxy = getProxy.current()
-    const tunnel = createTunnel.httpsOverHttp({ proxy, ...opts })
     getProxy.next()
-    return tunnel
+    return proxy
   }
 
-  luminatiTunnel.current = getProxy.current.bind(getProxy)
-  luminatiTunnel.index = () => getProxy.index
-  luminatiTunnel.next = getProxy.next.bind(getProxy)
-  luminatiTunnel.previous = getProxy.previous.bind(getProxy)
-  luminatiTunnel.size = () => proxies.length
+  proxyPool.current = getProxy.current.bind(getProxy)
+  proxyPool.index = () => getProxy.index
+  proxyPool.next = getProxy.next.bind(getProxy)
+  proxyPool.previous = getProxy.previous.bind(getProxy)
+  proxyPool.size = () => items.length
 
-  return luminatiTunnel
+  return proxyPool
 }
 
 module.exports.roundRobin = roundRobin
-module.exports.parseUri = parseUri
+module.exports.parse = parse
