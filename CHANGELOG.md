@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Kikobeats/proxies-pool/compare/v1.3.2...v2.0.0) (2020-05-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename into proxies-pool
+
+### Features
+
+* move tunnel dependency out of the library ([2464a91](https://github.com/Kikobeats/proxies-pool/commit/2464a91903286421495cc5d47a73ae74395348c9))
+
 ### [1.3.2](https://github.com/Kikobeats/luminati-tunnel/compare/v1.3.1...v1.3.2) (2019-06-19)
 
 
