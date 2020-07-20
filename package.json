@@ -2,7 +2,7 @@
   "name": "proxies-pool",
   "description": "HTTP/HTTPS tunnel proxy for luminati.io using round robin strategy.",
   "homepage": "https://nicedoc.io/Kikobeats/proxies-pool",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
