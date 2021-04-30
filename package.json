@@ -25,7 +25,7 @@
     "tunnel"
   ],
   "dependencies": {
-    "cycled": "~1.2.0"
+    "cycled": "~2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
