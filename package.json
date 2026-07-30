@@ -1,6 +1,6 @@
 {
   "name": "proxies-pool",
-  "description": "HTTP/HTTPS tunnel proxy for luminati.io using round robin strategy.",
+  "description": "Round-robin HTTP/HTTPS tunnel proxy pool for Bright Data (Luminati) and similar providers.",
   "homepage": "https://nicedoc.io/Kikobeats/proxies-pool",
   "version": "2.0.2",
   "main": "index.js",
@@ -18,10 +18,14 @@
   },
   "keywords": [
     "agent",
+    "brightdata",
     "http",
     "https",
     "luminati",
+    "pool",
     "proxy",
+    "round-robin",
+    "scraping",
     "tunnel"
   ],
   "dependencies": {
